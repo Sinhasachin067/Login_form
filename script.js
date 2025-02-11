@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    // e.preventDefault(); // Prevent form from submitting
+
     // Show form when button is clicked
     $('#showFormBtn').click(function () {
         $('#formContainer').toggle();
@@ -101,10 +104,8 @@ $(document).ready(function () {
 
 
 
-
     // Handle form submission
-    $('#myForm').submit(function (e) {
-        e.preventDefault(); // Prevent form from submitting
+    $('#myForm').submit(function () {
 
         // Get form values
         const name = $('#name').val();
@@ -142,33 +143,22 @@ $(document).ready(function () {
 
 
 
+        // Toggle icon visibility on input change
+        $('#name, #email, #number, #password').on('input', function () {
+            let inputId = $(this).attr('id');
+            if ($(this).val()) {
+                $('#' + inputId + '-icon').css('visibility', 'visible');
+            } else {
+                $('#' + inputId + '-icon').css('visibility', 'visible');
+            }
+        });
+
+
+        // ---------previw of photo-- 
+
     });
-
-
     //sign toggle
 
-
-
-    // Toggle icon visibility on input change
-    $('#name, #email, #number, #password').on('input', function () {
-        let inputId = $(this).attr('id');
-        if ($(this).val()) {
-            $('#' + inputId + '-icon').css('visibility', 'visible');
-        } else {
-            $('#' + inputId + '-icon').css('visibility', 'visible');
-        }
-    });
-
-
-
-
-
-
-    // addingClass 
-
-
-
-    // ---------previw of photo-- 
     $("#imag_uploade").change(function (e) {
         const img = URL.createObjectURL(e.target.files[0]);
         $("#display_img").attr("src", img);
@@ -176,11 +166,9 @@ $(document).ready(function () {
         // console.log('sachin');
     })
 
-    //password check
 
 
 
 
-    // -----------end document 
 });
 
